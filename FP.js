@@ -66,7 +66,7 @@ const sum = a => b => a + b;
 
 const sumM = lift2 (sum);
 
-<!-- const sum = ma => mb => mc => 	ma.flatMap(a => 		mb.flatMap(b => 			mc.map(c => a + b + c))); 		 	  -->
+<!-- const sum = ma => mb => mc => 	ma.flatMap(a => mb.flatMap(b => mc.map(c => a + b + c))); -->
 
 console.log(sumM (ma) (mb));
 
