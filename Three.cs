@@ -10,7 +10,7 @@ namespace ConsoleApp2
 
 
 	}
- 
+
 	public static class Either
 	{
 		public static Either<L, R> Of<L, R>(R r) => new Right<L, R>(r);

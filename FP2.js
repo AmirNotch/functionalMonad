@@ -1,46 +1,13 @@
-class Either {
-    constructor(value) {
-        this._value = value;
-    }
-    get value () {
-        return this._value;
-    }
-    static fromNullable = (a) => !is.defined(a) || is.none(a) ? Either.left(a) : Either.right(a);
-
-    static left = (a) => new Left(a);
-
-    static right = (a) => new Right(a);
-
-    static of = (a) => Either.right(a);
+function parse(str) {
+    //быстрая реализация; надо ухитриться сделать то же самое муторно, без использования конструктора
+    return new Function("", `return ${str}`)();
 }
-
-class Left extends Either {
-    constructor(unexpectedResult) {
-        super(unexpectedResult);
+function calc(str) {
+    const rgxp = /\(([^\)\(]+)\)/g;
+    if (!rgxp.test(str)) {
+        return parse(str);
     }
-    map (fn) {
-        return this;
-    }
-    get value () {
-        throw new TypeError(`Can't extract value from a Left() monad`);
-    }
-    toString () {
-        return `[object Either.Left] (value: ${this._value})`;
-    }
+    return calc(str.replace(rgxp, (str, n) => parse(n)));
 }
-
-class Right extends Either {
-    constructor (value) {
-        super(value);
-    }
-    get value () {
-        return this._value;
-    }
-    toString() {
-        return `[object Either.Right] (value: ${this._value})`;
-    }
-}
-
-const f = x => x === 0 ? Maybe.fail() : Maybe.of(10 / x);
-
-console.log(Either(10).fromNullable(f))
+console.log(calc(""));
+console.log(Math.sqrt(2 + 2 ))
