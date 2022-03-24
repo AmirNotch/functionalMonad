@@ -1,4 +1,4 @@
-const exp = document.getElementsByName('exp');
+const exp = document.getElementById('exp');
 const calcButton = document.getElementById('calc');
 const calcResult = document.getElementById('result');
 
