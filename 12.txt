@@ -1,0 +1,50 @@
+CREATE TABLE Employes
+(
+Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+FirstName NVARCHAR(300) NOT NULL,
+);
+
+CREATE TABLE EmployesSkills
+(
+Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+NameOfSkill NVARCHAR(300) NOT NULL,
+);
+CREATE TABLE Teams
+(
+Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+NameOfTeam NVARCHAR(300) NOT NULL,
+);
+
+CREATE TABLE Pozition
+(
+Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+NameOfPozition NVARCHAR(300) NOT NULL,
+);
+
+CREATE TABLE SkillsEmployesTeams
+(
+Id INT PRIMARY KEY IDENTITY,
+EmployesId UNIQUEIDENTIFIER REFERENCES Employes (Id),
+EmployesSkillsId UNIQUEIDENTIFIER REFERENCES EmployesSkills (Id),
+TeamsId UNIQUEIDENTIFIER REFERENCES Teams (Id),
+PozitionId UNIQUEIDENTIFIER REFERENCES Pozition (Id),
+);
+
+INSERT INTO SkillsEmployesTeams VALUES ('963B1D94-FE44-43DB-B801-3902AC30FE13','0F19EDEF-9B26-4F28-A599-2BC78E8782CF','7E36F4AB-A707-4204-9C0F-A842E36A025D','6F590AD0-2C8F-4202-B535-7A883DCBAFE5')
+
+select * from Employes
+select * from EmployesSkills
+select * from Teams
+select * from Pozition
+
+select * from SkillsEmployesTeams
+
+SELECT Employes.FirstName, EmployesSkills.NameOfSkill, Teams.NameOfTeam, Pozition.NameOfPozition
+FROM SkillsEmployesTeams
+JOIN Employes ON Employes.Id = SkillsEmployesTeams.EmployesId
+JOIN EmployesSkills ON EmployesSkills.Id= SkillsEmployesTeams.EmployesSkillsId
+JOIN Teams ON Teams.Id= SkillsEmployesTeams.TeamsId
+JOIN Pozition ON Pozition.Id= SkillsEmployesTeams.PozitionId
+
+
+
