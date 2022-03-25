@@ -1,69 +1,18 @@
-const exp = document.getElementsByName('exp');
-const calcButton = document.getElementById('calc');
-const calcResult = document.getElementById('result');
+var mystring = "2+sqrt(2+2))";
+mystring = mystring.replace('sqrt(','/');
+mystring = mystring.replace(')','/');
+console.log(mystring)
 
-calcButton.addEventListener('click', calcFunc);
+let s = "Hello this is a number [232 + 235]"
+let t =  "Hello [-100] this is a number "
+let u =  "Hello [-232a] this [121] is a number " // doesn't match 232a
 
-const actions = {
-    multiplication: {
-        value: '*',
-        label: 'multiplication',
-        func: (a,b) => (parseInt(a) * parseInt(b))
-    },
-    division: {
-        value: '/',
-        label: 'division',
-        func: (a,b) => (a / b)
-    },
-    addition: {
-        value: '+',
-        label: 'addintion',
-        func: (a,b) => (parseInt(a) + parseInt(b))
-    },
-    subtraction: {
-        value: '-',
-        label: 'subtraction',
-        func: (a,b) => (parseInt(a) - parseInt(b))
-    }
-}
 
-function calcFunc() {
-    const res = parseBrackets(exp.value);
-    calcResult.innerHTML = res;
-}
+let rx = /\[(-?\d+)\]/
 
-function parseBrackets(str) {
-    const out = str.match(/\((.*)\)/);
-    if (out) {
-        const expResult = parseBrackets(out[1]);
-        str = str.replace(out[0], expResult);
-        return calcExpr(str);
-    } else {
-        return calcExpr(str);
-    }
-}
+console.log(t.match(rx)[1])
+console.log(u.match(rx)[1])
 
-function calcExpr(str) {
-    let res;
-    Object.keys(actions).map(function(type) {
-        res = parseExpr(str, actions[type]);
-        if (res) {
-            str = str.replace(res.str, res.value.toString());
-            str = calcExpr(str);
-        }
-    });
-    return str;
-}
-
-function parseExpr(str, action) {
-    const reg = new RegExp(`((\\d+)\\s*\\${action.value}\\s*(\\d+))`);
-    const out = str.match(reg);
-    if (!out) return false;
-
-    const result = {
-        str: out[1]
-    };
-
-    result.value = action.func(out[2], out[3]);
-    return result;
-}
+var mystr = ("data-123");
+mystr.slice(5,8);
+console.log(mystr.slice(5,7))

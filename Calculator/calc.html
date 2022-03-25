@@ -31,7 +31,9 @@
         addition: {
             value: '+',
             label: 'addition',
-            func: (a,b) => (parseInt(a) + parseInt(b))
+            func: (a,b) => {
+                return parseInt(a) + parseInt(b)
+            }
         },
         subtraction: {
             value: '-',
@@ -40,14 +42,43 @@
         },
         sqrt: {
             value: 'sqrt',
-            label: 'Math.sqrt()',
+            label: 'sqrt',
             func: (a,b) => Math.sqrt(a + b)
         }
     }
 
     function calcFunc() {
-        const res = parseBrackets(exp.value);
-        calcResult.innerHTML = res;
+        let res = parseBrackets(exp.value);
+        console.log(res)
+        let result = res.includes("sqrt");
+            res = res.replace('sqrt','/')
+            console.log(res)
+            let a = 0;
+            let b = '';
+            for (var i = 0; i < res.length; i++){
+                if (res[i] === '/'){
+
+                    a = res[i+1]
+                    a += res[i+2]
+
+                }
+            }
+            console.log(a)
+
+
+            res = res.replace('/','')
+
+            res = res.replace(a,'')
+
+
+        Math.sqrt(a)
+        if (a !== 0){
+            res += Math.sqrt(a)
+        }
+        let res1 = parseBrackets(res);
+        res1 = parseBrackets(res1);
+        res1 = parseBrackets(res1);
+        calcResult.innerHTML = res1;
     }
 
     function parseBrackets(str) {
