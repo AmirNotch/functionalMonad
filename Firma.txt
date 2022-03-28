@@ -1,0 +1,105 @@
+use Firma
+
+--CREATE TABLE Type (
+--	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+--	FirstName NVARCHAR(300) not null,
+--)
+
+
+--CREATE TABLE Passport (
+--	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+--	FirstName NVARCHAR(300) not null,
+--	TypeId UNIQUEIDENTIFIER REFERENCES Type (Id),
+--	WaterDown int not null,
+--	DateBuild Datetime not null,
+--	ShipId UNIQUEIDENTIFIER REFERENCES Ship (Id)
+--)
+
+--CREATE TABLE Ship (
+--	Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+--)
+
+--CREATE TABLE Addres
+--(
+--Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+--NameOdAdress NVARCHAR(300) NOT NULL,
+--);
+
+--CREATE TABLE Employes
+--(
+--Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+--FirstName NVARCHAR(300) NOT NULL,
+--AdressID UNIQUEIDENTIFIER REFERENCES Addres (Id),
+--);
+
+--CREATE TABLE Team
+--(
+--Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+--NameOfTeam NVARCHAR(300) NOT NULL,
+--);
+
+--CREATE TABLE Pozition
+--(
+--Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+--NameOfPozition NVARCHAR(300) NOT NULL,
+--);
+
+
+--CREATE TABLE Sort
+--(
+--Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+--NameOfSort NVARCHAR(300) NOT NULL,
+--);
+
+
+--CREATE TABLE Vivod_Na_Lov
+--(
+--PassportId UNIQUEIDENTIFIER REFERENCES Passport (Id),
+--EmployeId UNIQUEIDENTIFIER REFERENCES Employes (Id),
+--TeamId UNIQUEIDENTIFIER REFERENCES Team (Id),
+--PozitionId UNIQUEIDENTIFIER REFERENCES Pozition (Id),
+--DateGoOut DATE not null,
+--ComeBack DATE not null,
+--WeightOfFish INT not null,
+--SortId  UNIQUEIDENTIFIER REFERENCES Sort (Id),
+--);
+	
+--select * from Vivod_Na_Lov
+
+
+
+--CREATE TABLE Flight
+--(
+--Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+--NameOfFlight NVARCHAR(300) NOT NULL,
+--ShipId UNIQUEIDENTIFIER REFERENCES Ship (Id),
+--);
+
+
+
+--CREATE TABLE Jar
+--(
+--Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+--NameOfJar NVARCHAR(300) NOT NULL,
+--FlightId UNIQUEIDENTIFIER REFERENCES Flight (Id),
+--);
+
+
+--CREATE TABLE Quality
+--(
+--Id UNIQUEIDENTIFIER PRIMARY KEY default NEWID(),
+--Quality NVARCHAR(300) NOT NULL,
+--);
+
+--CREATE TABLE Ficshation
+--(
+--JarId UNIQUEIDENTIFIER REFERENCES Jar (Id),
+--ComeOn DateTime not null,
+--DateGoOut DateTime not null,
+--ComeBack DateTime not null,
+--QualityId UNIQUEIDENTIFIER REFERENCES Quality (Id),
+--);
+
+
+
+

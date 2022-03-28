@@ -1,0 +1,69 @@
+use Firma
+--insert Into Type Values(default, 'Легковой')
+
+
+--insert Into Ship Values(default)
+
+
+--insert Into Passport Values(default, 'Афина','E8C52AE9-3A6D-47C9-8FA1-25B30356E00A',100,'04.12.2016','E53F5EF6-2B88-48B7-8D12-1D5AEC85E8F6')
+--insert Into Passport Values(default, 'Натали','E8C52AE9-3A6D-47C9-8FA1-25B30356E00A',100,'04.12.2016','FF1CDC58-12AE-4865-A13F-9AC54D0C012E')
+--insert Into Passport Values(default, 'Титаник','34D3CFAC-8CE2-47D8-AF49-38549E298E92',400,'04.12.2016','50D9D5B8-BF26-47AD-99A4-B88C63723963')
+
+
+--insert Into Addres Values(default, 'Розыбакиева')
+--insert Into Addres Values(default, 'Абая')
+--insert Into Addres Values(default, 'Карасай Батыра')
+
+
+--insert Into Employes Values(default, 'Nikita','CCBB09EB-14E1-427C-9826-18BE5D73D271')
+--insert Into Employes Values(default, 'Kirill','B1624F27-5583-4A4D-B560-921CA17E2DCD')
+--insert Into Employes Values(default, 'Aндрей','B9E0D7E9-7993-44C8-AFBE-B0E3E364FBAB')
+
+--insert Into Team Values(default, 'Морские котики')
+--insert Into Team Values(default, 'Снежные барсы')
+--insert Into Team Values(default, 'Летние водоплавающие')
+
+--insert into Pozition Values(default, 'Новичок')
+--insert into Pozition Values(default, 'Продвинутый')
+--insert into Pozition Values(default, 'Мастер')
+
+--insert into Sort Values(default, 'Треска')
+--insert into Sort Values(default, 'Осётр')
+--insert into Sort Values(default, 'Белуга')
+
+insert into Vivod_Na_Lov Values('0BA0F9DD-3A7E-4CDE-9E78-19C5699A9457',
+'ECE3A0BE-11B5-41AD-BF93-115BD505906E','66CD4779-BFC7-4FBF-93E0-7092122894CE',
+'2B1BD4CA-B3AB-40A0-947B-9F91612C6DA3', '28.12.2016',
+'31.12.2016',20,'0D1FF279-6E5B-4871-A49C-0A911AC6BBDB')
+
+
+--insert into Vivod_Na_Lov Values('A054EC96-067E-4700-821B-345D4991AA2A',
+--'5E928CEF-3750-41F1-B3D3-47F8A1208404','9BBCF3A5-3041-4A8D-ADCA-AD1DE5ADC803',
+--'82E112BC-0575-4803-8E6B-199349632FAB', '04.12.2016',
+--'05.12.2016',30,'1873EDA9-A93B-49BA-9BE1-5D435507908E')
+
+--insert into Vivod_Na_Lov Values('C0213925-DF9F-46BF-BE8A-AE3869EB9F45',
+--'97872233-6B29-4DA1-9171-ACF64377D365','9BBCF3A5-3041-4A8D-ADCA-AD1DE5ADC803',
+--'8CA5DF5D-568E-4B0B-9D74-C06D89B25C4D', '04.12.2016',
+--'05.12.2016',40,'A367D514-0B97-4D6B-AF2F-A557F8D8FE43')
+
+--insert Into Flight Values(default, 'Сёмская','')
+
+--insert Into Flight Values(default, 'Сёмская','')
+--insert Into Flight Values(default, 'Крабовая')
+--insert Into Flight Values(default, 'Осьминожья')
+
+
+select * from Type
+select * from Passport
+select * from Ship
+select * from Addres
+select * from Employes
+select * from Team
+select * from Pozition
+select * from Sort
+select * from Vivod_Na_Lov
+
+
+
+
