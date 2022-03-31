@@ -110,3 +110,179 @@ INSERT INTO KATERA VALUES(1,'БАНКА-Осётра')
 
 
 --
+
+
+
+
+
+
+
+Use RIBAKI
+
+--CREATE TABLE KATERA(
+--	Id INT PRIMARY KEY NOT NULL,
+--	FirstName NVARCHAR(300) NOT NULL,
+--	Type NVARCHAR(300) NOT NULL,
+--	WaterDown NVARCHAR(300) NOT NULL,
+--	DateBuild NVARCHAR(300) NOT NULL
+--)
+
+--CREATE TABLE Employee(
+--	Id INT PRIMARY KEY NOT NULL,
+--	Name NVARCHAR(300) NOT NULL,
+--	Addres NVARCHAR(300) NOT NULL
+--)
+
+--CREATE TABLE Pozition(
+--	Id INT PRIMARY KEY NOT NULL,
+--	Name NVARCHAR(300) NOT NULL
+--)
+
+--CREATE TABLE Banki(
+--	Id INT PRIMARY KEY NOT NULL,
+--	Name NVARCHAR(300) NOT NULL
+--)
+
+--CREATE TABLE Sort(
+--	Id INT PRIMARY KEY NOT NULL,
+--	Name NVARCHAR(300) NOT NULL
+--)
+
+--CREATE TABLE Vihod_Na_Ulov(
+--	Id INT PRIMARY KEY NOT NULL,
+--	Kater INT REFERENCES KATERA (Id),
+--	Go_Out Date NOT NULL,
+--	Come_Back Date NOT NULL
+--)
+
+--CREATE TABLE Ulov(
+--	VihodNaUlovId INT REFERENCES Vihod_Na_Ulov (Id),
+--	SortId INT REFERENCES Sort (Id),
+--	Weight INT NOT NULL
+--)
+
+--CREATE TABLE TeamEmploye(
+--	VihodNaUlovId INT REFERENCES Vihod_Na_Ulov (Id),
+--	EmployeId INT REFERENCES Employee (Id),
+--	PozitionId INT REFERENCES Pozition (Id)
+--)
+
+--CREATE TABLE EmployePozition(
+--	EmployeId INT REFERENCES Employee (Id),
+--	PozitionId INT REFERENCES Pozition (Id)
+--)
+
+--CREATE TABLE BANKI_REISOV(
+--	VihodNaUlovId INT REFERENCES Vihod_Na_Ulov (Id),
+--	BankiId INT REFERENCES Banki (Id),
+--	Go_Out Date NOT NULL,
+--	Come_Back Date NOT NULL,
+--	Kachestvo NVARCHAR(300) NOT NULL,
+--)
+
+
+--INSERT INTO KATERA VALUES(1,'АФИНА','Грузовой','100','2020-11-12')
+
+--INSERT INTO Vihod_Na_Ulov VALUES(2,1,'2021-11-12','2021-12-12')
+
+----INSERT INTO Sort VALUES(1,'Треска')
+----INSERT INTO Sort VALUES(2,'Лосось')
+
+----INSERT INTO Ulov VALUES(1,2,150)
+----INSERT INTO Ulov VALUES(2,1,190)
+
+----1
+
+--SELECT KATERA.FirstName, KATERA.Type, Go_Out
+--FROM Vihod_Na_Ulov
+--JOIN KATERA ON KATERA.Id = Vihod_Na_Ulov.Kater
+
+----2
+
+--INSERT INTO TeamEmploye VALUES(1,1,1)
+
+
+----3
+
+--SELECT Vihod_Na_Ulov.Go_Out, Vihod_Na_Ulov.Kater as Катера, Weight 
+--FROM Ulov
+--JOIN Vihod_Na_Ulov ON Vihod_Na_Ulov.Id = Ulov.VihodNaUlovId
+--JOIN Sort ON Sort.Id = Ulov.SortId
+--WHERE Vihod_Na_Ulov.Go_Out >= '2019-03-25' AND Vihod_Na_Ulov.Go_Out <= '2019-05-15'
+--ORDER by Weight ASC
+
+
+
+----10 
+
+--INSERT INTO KATERA VALUES(2,'ТИТАНИК','Грузовой','300','2020-11-12')
+
+
+---- 9
+
+--UPDATE KATERA SET Type = 'Легковой'
+--WHERE FirstName = 'ТИТАНИК'
+
+----5
+
+--INSERT INTO KATERA VALUES(1,'БАНКА-Осётра')
+
+
+--
+
+
+--1 
+
+SELECT KATERA.FirstName, Vihod_Na_Ulov.Go_Out, Ulov.Weight, Sort.Name 
+FROM Ulov
+RIGHT JOIN Vihod_Na_Ulov 
+	ON Ulov.VihodNaUlovId = Vihod_Na_Ulov.Id
+LEFT JOIN KATERA
+	ON KATERA.Id = Vihod_Na_Ulov.Id
+LEFT JOIN Sort
+	ON .Sort.Id = Ulov.SortId
+
+
+--2
+
+
+--3
+
+--SELECT KATERA.FirstName, Ulov.Weight, Vihod_Na_Ulov.Go_Out, Vihod_Na_Ulov.Come_Back, Sort.Name 
+--FROM Ulov
+--RIGHT JOIN Vihod_Na_Ulov 
+--	ON Ulov.VihodNaUlovId = Vihod_Na_Ulov.Id
+--LEFT JOIN KATERA
+--	ON KATERA.Id = Vihod_Na_Ulov.Id
+--LEFT JOIN Sort
+--	ON .Sort.Id = Ulov.SortId
+--WHERE Vihod_Na_Ulov.Go_Out BETWEEN '2021-10-12' AND '2021-12-12' AND Weight = (SELECT MAX(Weight) FROM Ulov)
+
+
+--4 
+
+SELECT Banki.Name, Vihod_Na_Ulov.Go_Out, Vihod_Na_Ulov.Come_Back, Ulov.Weight, Sort.Name
+FROM BANKI_REISOV
+RIGHT JOIN Vihod_Na_Ulov
+	ON BANKI_REISOV.VihodNaUlovId = Vihod_Na_Ulov.Id
+LEFT JOIN Ulov
+	ON Vihod_Na_Ulov.Id = Ulov.VihodNaUlovId
+LEFT JOIN Banki
+	ON BANKI_REISOV.BankiId = Banki.Id
+LEFT JOIN KATERA
+	ON Vihod_Na_Ulov.Kater = KATERA.Id
+LEFT JOIN Sort
+	ON Ulov.SortId = Sort.Id
+WHERE Weight = (SELECT AVG(Weight) FROM Ulov)
+
+
+--5 
+
+
+
+
+--select * from Sort
+
+--INSERT INTO Ulov VALUES(4,1,200)
+
+--insert into KATERA values(3,'NATALY', 'Грузовой', 200,'2020-03-12')
